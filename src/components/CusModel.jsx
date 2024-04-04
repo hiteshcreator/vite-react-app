@@ -12,7 +12,7 @@ const CusModel = ({show, handleClose, modelData}) => {
         return null;
     }
 
-   const {email,address,username,website} = modelData;
+   const {email,address,name,website} = modelData;
 
   return (
     <div
@@ -28,27 +28,27 @@ const CusModel = ({show, handleClose, modelData}) => {
 
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="username"  value={username}/>
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="name"  value={name} disabled />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="email" value={email} />
+              <Form.Control type="email" placeholder="email" value={email} disabled />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>website</Form.Label>
-              <Form.Control type="text" placeholder="website"  value={website}/>
+              <Form.Control type="text" placeholder="website"  value={website} disabled />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Row>
                 <Col>
-                  <Form.Control type="text" placeholder="city"  value={address.city} />
+                  <Form.Control type="text" placeholder="city"  value={address.city} disabled  />
                 </Col>
                 <Col>
-                  <Form.Control type="text" placeholder="street"  value={address.street} />
+                  <Form.Control type="text" placeholder="street"  value={address.street} disabled  />
                 </Col>
               </Row>
             </Form.Group>
