@@ -9,6 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 import DmData from "./dummyData/DmData.js"
 
+
 function App() {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +20,8 @@ function App() {
   //getUserData: custom hook call user data
   const getUserData = async () => {
     const data = await useFetchAPI();
-    setUser(data);
+    console.log("testing",data);
+    setUser(data?data:DmData);
     setLoading(false);
   };
 
