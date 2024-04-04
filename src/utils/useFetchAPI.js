@@ -1,8 +1,6 @@
 import React from "react";
 
 const useFetchAPI = async () => {
-
-//   const fetchUser = async () => {
     try {
       const response = await fetch("https://jsonplaceholder.typicode.com/users");
 
@@ -16,13 +14,6 @@ const useFetchAPI = async () => {
     } catch (error) {
       console.log("error in custom hook : ", error);
     }
-//   };
-
-//   useEffect(() => {
-//     fetchUser();
-//   }, []);
-
-//   return fetchUser;
 };
 
 export default useFetchAPI;

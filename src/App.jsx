@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback,useMemo } from "react";
 import useFetchAPI from "../src/utils/useFetchAPI";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
@@ -19,7 +19,7 @@ function App() {
   //getUserData: custom hook call user data
   const getUserData = async () => {
     const data = await useFetchAPI();
-    setUser(data?data:DmData);
+    setUser(data);
     setLoading(false);
   };
 
@@ -47,7 +47,7 @@ function App() {
         setUser(filtered);
       }
 
-    },[searched, user]  );
+    },[searched,user]);
 
   // handelModel: refer to open the model & send row data to child component
   const handelModel = (e, params) => {
