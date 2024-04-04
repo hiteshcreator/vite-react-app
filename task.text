@@ -1,0 +1,23 @@
+Task Description:
+ -----------------
+
+ You are required to build a React application that displays a list of users fetched from the JSONPlaceholder API (<https://jsonplaceholder.typicode.com/>). The application should have the following features:
+
+ 1. User List: Display a list of users in a table or grid format. Each user entry should include their `id`, `name`, `username`, `email`, and `address.city` properties.
+ 2. Pagination: Implement pagination to limit the number of users displayed per page. Use a page size of 10 users per page.
+ 3. Search: Add a search bar that allows users to search for a specific user by their `name` or `username`.
+ 4. Sorting: Implement sorting functionality for the user list based on the `name` property in ascending or descending order.
+ 5. User Details: When a user is clicked, display their details in a separate view or modal. The user details should include their `id`, `name`, `username`, `email`, `address`, `phone`, and `website` properties.
+ 6. Responsive Design: Ensure that the application works well on both desktop and mobile devices.
+ 7. - Create a custom hook for handling API requests and data fetching.
+
+ ### Technical Requirements:
+ -----------------
+
+ - Use React hooks for managing state
+ - Write reusable and composable components.
+ - Implement a clean and maintainable folder structure.
+ - Write tests for critical components and logic using a testing framework like Jest and React Testing Library.
+ - Use functional components and ES6 syntax throughout the project.
+ - Optimize the application for performance, e.g., using React.memo, PureComponent, or shouldComponentUpdate.
+ - Implement error handling for network requests and edge cases.
