@@ -3,14 +3,11 @@ import useFetchAPI from "../src/utils/useFetchAPI";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
-import { styled } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
 import CusModel from "../src/components/CusModel";
-
 import SearchBars from "./components/SearchBars";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
+import DmData from "./dummyData/DmData.js"
 
 function App() {
   const [user, setUser] = useState([]);
@@ -19,20 +16,21 @@ function App() {
   const [rowModel, setRowModel] = useState(false);
   const [modelData, setModelData] = useState("");
 
+  //getUserData: custom hook call user data
   const getUserData = async () => {
     const data = await useFetchAPI();
-    setUser(data);
+    setUser(data?data:DmData);
     setLoading(false);
   };
 
   useEffect(() => {
     window.addEventListener("load", getUserData);
-    console.log("dat--10", user);
     return () => {
       window.removeEventListener("load", getUserData);
     };
   }, [getUserData]);
 
+  //requestSearch: refer to custom search with name , username
   const requestSearch = useCallback((searchedVal) => {
       if (!searchedVal) {
         setSearched("");
@@ -51,13 +49,16 @@ function App() {
 
     },[searched, user]  );
 
+  // handelModel: refer to open the model & send row data to child component
   const handelModel = (e, params) => {
     setRowModel(true);
     setModelData(params.row);
   };
 
+  // handleClose function refer to close the model
   const handleClose = () => setRowModel(false);
 
+  // columns represent to data table
   const columns = [
     { field: "id" },
     { field: "name" },
@@ -85,7 +86,7 @@ function App() {
 
   return (
     <Container maxWidth="sm">
-      
+
       {rowModel ? (
         <CusModel
           show={rowModel}
@@ -98,25 +99,10 @@ function App() {
 
       <SearchBars searched={searched} requestSearch={requestSearch} />
 
-      {/* <h1>Material UI</h1>
-      <TextField id="outlined-basic"  variant="outlined"
-        size="small"
-        value={searched}
-        onChange={(e)=>requestSearch(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <SearchIcon/>
-          )
-        }}
-      /> */}
       {user ? (
-        // [...user].map((domp,i) => (
-        //   <>
-        //     <div key={domp.id}>
-        //       <li>{domp.name}</li>
-        //     </div>
 
         <Box sx={{ height: 500, width: "100%", marginTop: "10px" }}>
+
           <DataGrid
             columns={columns}
             rows={user}
@@ -132,13 +118,13 @@ function App() {
             loading={loading ? true : false}
             editMode="row"
           />
-        </Box>
-      ) : (
-        // </>
-        // ))
 
+        </Box>
+
+      ) : (
         ""
       )}
+
     </Container>
   );
 }

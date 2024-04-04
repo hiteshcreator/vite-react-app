@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 
 const SearchBars = ({searched,requestSearch}) => {
 
-  console.log("D")
   return (
       <>
       <Grid container justifyContent="center">

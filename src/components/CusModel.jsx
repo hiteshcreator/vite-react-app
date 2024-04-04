@@ -11,12 +11,8 @@ const CusModel = ({show, handleClose, modelData}) => {
     if (!modelData) {
         return null;
     }
-    console.log(show, handleClose,modelData)
-   const {email,address,username,website} = modelData;
-//   const [show, setShow] = useState(true);
 
-//   const handleClose = () => setShow(false);
-//   const handleShow = () =>  setShow(true);
+   const {email,address,username,website} = modelData;
 
   return (
     <div
