@@ -20,7 +20,7 @@ function App() {
   //getUserData: custom hook call user data
   const getUserData = async () => {
     const data = await useFetchAPI();
-    console.log("testing",data);
+    // console.log("testing",data);
     setUser(data?data:DmData);
     setLoading(false);
   };
