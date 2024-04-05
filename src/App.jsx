@@ -25,12 +25,16 @@ function App() {
     setLoading(false);
   };
 
+  // useEffect(() => {
+  //   window.addEventListener("load", getUserData);
+  //   return () => {
+  //     window.removeEventListener("load", getUserData);
+  //   };
+  // }, [getUserData]);
+
   useEffect(() => {
-    window.addEventListener("load", getUserData);
-    return () => {
-      window.removeEventListener("load", getUserData);
-    };
-  }, [getUserData]);
+    getUserData();
+  }, []);
 
   //requestSearch: refer to custom search with name , username
   const requestSearch = useCallback((searchedVal) => {
