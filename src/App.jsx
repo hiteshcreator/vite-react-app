@@ -21,7 +21,7 @@ function App() {
   const getUserData = async () => {
     const data = await useFetchAPI();
     // console.log("testing",data);
-    setUser(data?data:DmData);
+    setUser(data);
     setLoading(false);
   };
 
@@ -33,14 +33,19 @@ function App() {
   // }, [getUserData]);
 
   useEffect(() => {
+    const controller = new AbortController();
     getUserData();
+    return () => {
+      controller.abort();
+    };
+    
   }, []);
 
   //requestSearch: refer to custom search with name , username
-  const requestSearch = useCallback((searchedVal) => {
+  const requestSearch = useCallback(async(searchedVal) => {
       if (!searchedVal) {
         setSearched("");
-        getUserData();
+        await getUserData();
       } else {
         setSearched(searchedVal);
         const filtered = user.filter((obj) => {
@@ -49,8 +54,7 @@ function App() {
             obj.username.toLowerCase().includes(searchedVal.toLowerCase())
           );
         });
-
-        setUser(filtered);
+        setUser(filtered);        
       }
 
     },[searched,user]);
